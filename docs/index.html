@@ -1,0 +1,200 @@
+<html style="overflow: hidden;">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self';
+        script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://cdn.jsdelivr.net;
+        style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.bunny.net;
+        font-src 'self' https://cdn.jsdelivr.net https://fonts.bunny.net data:;
+        img-src 'self' data:;
+        connect-src 'self' https://cdn.jsdelivr.net;
+        object-src 'none';
+        base-uri 'self';
+      "
+    >
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vuetify@3.10.0/dist/vuetify.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="https://fonts.bunny.net/css?family=roboto:400,500,700">
+    <script src='./scripts/prevent-clickjacking.js'></script>
+    <style id="antiClickjack">
+        body{display:none !important;}
+    </style>
+    <script type="importmap">
+      {
+        "imports": {
+          "vue": "./scripts/vue.esm-browser.js",
+          "vuetify": "./scripts/vuetify.esm.js"
+        }
+      }
+    </script>
+  </head>
+  <style>
+
+svg {
+  width: 160px;
+  height: auto;
+  color: #FFF;
+}
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #0072bc transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#inner-splash {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.v-list-item-title {
+  font-size: 85%;
+}
+
+.v-list-item-subtitle {
+  font-size: 120%;
+}
+
+  </style>
+</head>
+<body>
+  <div id="splash" style="height: 100vh;">
+    <div id="inner-splash" style="height: 100vh;">
+      <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+    </div>
+  </div>
+  <div id="app">
+    <v-app>
+      <v-app-bar app color="#F4F4F5" density="comfortable">
+        <div class="d-flex align-center">
+          <img
+            class="mt-2 mb-2 pr-4 ml-4"
+            src="./logo.svg"
+            style="width: 60px"
+          />
+        </div>
+        <div class="primary--text text-h5 text-primary hidden-sm-and-down">
+          Суд на долоні
+        </div>
+        <v-spacer></v-spacer>
+        <v-btn
+          @click="lang = lang === 'en' ? 'uk' : 'en'"
+          class="mr-4"
+          variant="outlined"
+          color="primary darken-2"
+          outlined
+          depressed
+        >
+          {{ lang }}
+        </v-btn>
+      </v-app-bar>
+      <v-main class="main-container">
+        <v-container fluid class="pt-0 pb-0">
+          <v-row class="bg-blue-grey-lighten-4">
+            <v-col cols="12">
+              <v-card flat max-width="960px" class="transparent d-flex align-center" style="margin: auto; min-height: 30vh;">
+                <v-card-text class="text-center">
+                  <div
+                    class="d-flex flex-column flex-md-row align-center justify-center text-center text-md-left w-100"
+                  >
+                    <img
+                      class="mt-2 mb-2"
+                      src="./logo.svg"
+                      style="width: 80px"
+                      alt="Court on the Palm logo"
+                    />
+                    <div
+                      class="mt-2 mt-sm-0 ml-sm-4 primary--text text-h4 text-sm-h2 font-weight-medium text-primary"
+                    >
+                      {{ lang === 'en' ? 'Court on the Palm' : 'Суд на долоні' }}
+                    </div>
+                  </div>
+
+                  <div class="text-h6 text-sm-h5 mt-6 mb-6">
+                    {{ lang === 'en'
+                      ? 'Temporary Suspension of the Project'
+                      : 'Сервіс тимчасово призупинено' }}
+                  </div>
+                </v-card-text>
+              </v-card>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col cols="12">
+              <v-card flat max-width="960px" style="margin: auto;">
+                <v-card-text class="text-center mt-6">
+                  <div class="text-justify" v-if="lang === 'en'">
+                    <p class="mb-4">Dear friends and users,</p>
+                    <p class="mb-4">We want to thank you for being part of the Court on the Palm community since its launch in 2018. Our mission has always been to make court decisions more accessible and meaningful by processing them through data cleaning, entity recognition, and enrichment using official open data sources.</p>
+                    <p class="mb-4">Unfortunately, since the full-scale invasion of Ukraine in 2022, access to many of these crucial data sources has been restricted. The Ministry of Justice no longer publishes the Unified Register of Legal Entities, the State Judicial Administration has stopped releasing judges’ names, and further limitations on the Register of Court Decisions continue to be discussed.</p>
+                    <p class="mb-4">For the past few years, we have maintained the service as an archive of court decisions from January 2018 to February 2022. However, due to these growing constraints, we have decided to temporarily suspend access to the platform.</p>
+                    <p class="mb-4">We deeply appreciate your trust, support, and engagement throughout these years. We hope to return once the environment allows us to provide transparent and reliable data again.</p>
+                    <p class="mb-4 text-right">Warm regards,<br/>
+                    <span class="font-weight-bold">The Court on the Palm Team</span></p>
+                  </div>
+                  <div class="text-justify" v-else>
+                    <p class="mb-4">Дорогі друзі та користувачі,</p>
+                    <p class="mb-4">Щиро дякуємо вам, що були з нами від самого запуску Суду у долоні у 2018 році. Нашою метою завжди було зробити судові рішення більш доступними та зрозумілими — шляхом їх обробки, очищення даних, розпізнавання сутностей і збагачення інформацією з офіційних відкритих джерел.</p>
+                    <p class="mb-4">На жаль, після повномасштабного вторгнення Росії в Україну у 2022 році доступ до багатьох важливих джерел відкритих даних було обмежено. Міністерство юстиції припинило публікацію Єдиного державного реєстру юридичних осіб, Державна судова адміністрація — імен суддів у судових рішеннях щодо кримінального судочинства, а обговорення щодо подальшого обмеження доступу до Реєстру судових рішень тривають.</p>
+                    <p class="mb-4">Протягом останніх років ми підтримували сервіс у вигляді архіву судових рішень за період із січня 2018 року по лютий 2022 року. Проте через поточні обмеження ми вирішили тимчасово призупинити роботу платформи.</p>
+                    <p class="mb-4">Ми глибоко вдячні вам за довіру, підтримку та вашу небайдужість упродовж усіх цих років. Сподіваємося відновити роботу, щойно умови дозволять знову забезпечити прозорість роботи та надійнійне постачання даних.</p>
+                    <p class="mb-4 text-right">З теплом і вдячністю,<br/>
+                    <span class="font-weight-bold">Команда Суд у долоні</span></p>
+                  </div>
+                </v-card-text>
+              </v-card>
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-main>
+      <v-footer app class="mt-6">
+        <v-col
+          class="text-center text-caption"
+          cols="12"
+        >
+          © 2018 - {{ new Date().getFullYear() }} - Суд на долоні (<a href="mailto:kirillzakharov13@gmail.com">kirillzakharov13@gmail.com</a>)</v-col>
+      </v-footer>
+    </v-app>
+  </div>
+  <style>
+    .transparent {
+      background: 0;
+    }
+  </style>
+  <script type="module" src="./scripts/main.js"></script>
+  </body>
+</html>
